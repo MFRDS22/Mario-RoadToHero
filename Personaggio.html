@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario: L'Eroe dietro lo Studente - Road To Hero</title>
+    <style>
+        /* Reset e Font Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #060b11;
+            color: #fff;
+            line-height: 1.7;
+        }
+
+        /* Navbar per tornare indietro */
+        .navbar {
+            background-color: rgba(10, 21, 33, 0.9);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar a {
+            color: #00d2ff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #fff;
+        }
+
+        /* Contenitore Principale */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* -------------------------------------------------------------
+           SEZIONE PROFILO PERSONAGGIO
+        ------------------------------------------------------------- */
+        .character-profile {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .character-profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        /* Box Illustrazione */
+        .character-art {
+            background: linear-gradient(135deg, #0a2540 0%, #00d2ff 100%);
+            width: 100%;
+            height: 350px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #060b11;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .character-info h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+        .character-info .subtitle {
+            color: #00d2ff;
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .character-info p {
+            color: #b3ccdf;
+            margin-bottom: 15px;
+        }
+
+        /* Scheda Identità */
+        .identity-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid #00d2ff;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 4px 4px 0;
+        }
+        .identity-card ul {
+            list-style: none;
+        }
+        .identity-card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .identity-card strong {
+            color: #00d2ff;
+        }
+
+        /* -------------------------------------------------------------
+           SEZIONE ANTEPRIMA (INIZIO ROMANZO)
+        ------------------------------------------------------------- */
+        .preview-section {
+            background: radial-gradient(circle at top, #0a1b2e 0%, #060b11 100%);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .preview-section h2 {
+            font-size: 2rem;
+            color: #00d2ff;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Stile per l'Incipit ad alto impatto */
+        .incipit-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #fff;
+            line-height: 1.8;
+            border-bottom: 1px dashed rgba(0, 210, 255, 0.3);
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .incipit-text::before {
+            content: "“";
+            font-size: 4rem;
+            color: rgba(0, 210, 255, 0.15);
+            position: absolute;
+            top: -25px;
+            left: -15px;
+        }
+
+        .preview-text p {
+            color: #d1e2f0;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #55728c;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGAZIONE PER TORNARE ALLA HOME -->
+    <nav class="navbar">
+        <a href="index.html">&larr; Torna alla Home del Sito</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- PANORAMICA SUL PERSONAGGIO -->
+        <section class="character-profile">
+            <div class="character-art">
+                [ Illustrazione Mario ]
+            </div>
+            <div class="character-info">
+                <h1>Identikit: Mario</h1>
+                <div class="subtitle">La normalità è solo una maschera.</div>
+                <p>All'apparenza, Mario affronta le sfide che ogni ragazzo della sua età conosce fin troppo bene: sessioni d'esame estenuanti, il peso dei libri e una routine divisa tra aule universitarie e sogni per il futuro.</p>
+                <p>Sunder questa superficie ordinaria, però, batte il cuore di chi non ha scelto il proprio destino, ma ha dovuto accettarlo. Quando l'oscurità minaccia ciò che gli è più caro, i libri lasciano il posto all'acciaio, svelando un cammino tortuoso e letale.</p>
+                
+                <div class="identity-card">
+                    <ul>
+                        <li><strong>Stato attuale:</strong> Studente Universitario / Eroe Riluttante</li>
+                        <li><strong>Arma distintiva:</strong> Katana Bianca (la cui purezza sarà messa a dura prova)</li>
+                        <li><strong>Tratto psicologico:</strong> Determinato, protettivo, costantemente in bilico tra due mondi che rischiano di distruggersi a vicenda.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANTEPRIMA DEL ROMANZO -->
+        <section class="preview-section">
+            <h2>Un assaggio della storia</h2>
+            
+            <!-- L'incipit ufficiale richiesto -->
+            <div class="incipit-text">
+                fronte sanguinante, un solo occhio marrone aperto, il respiro affannato e la lama della katana bianca piena di crepe. si, questa era la situazione in cui mi trovavo e per capire come mi ci sia trovato, bisogna partire dall'inizio di questa avventura...
+            </div>
+
+            <!-- Continuo dell'anteprima (senza spoiler) -->
+            <div class="preview-text">
+                <p>Prima delle crepe sulla lama, c'era solo il riflesso pulito del metallo. Prima del sangue sulla fronte, c'erano solo le notti passate in bianco a ripassare per l'esame del giorno dopo.</p>
+                <p>La discesa di Mario nell'abisso non è stata improvvisa, ma un susseguirsi di scelte inevitabili. Come può un ragazzo qualunque sopravvivere quando il peso del mondo crolla interamente sulle sue spalle? E soprattutto, la sua fedele katana bianca riuscirà a reggere l'urto del prossimo, devastante scontro prima di andare definitivamente in frantumi?</p>
+                <p>Il viaggio ha inizio. E la strada per diventare un eroe è appena cominciata...</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 Mario: Road To Hero. Tutti i diritti riservati.
+    </footer>
+
+</body>
+</html>

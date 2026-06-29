@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario: Road To Hero - Sito Ufficiale</title>
+    <style>
+        /* Reset e Font Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #060b11;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------------------------------
+           ANIMAZIONE DEL TAGLIO DELLA KATANA (INTRO SCREEN)
+        ------------------------------------------------------------- */
+        .intro-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        /* Il fendente di luce azzurra */
+        .katana-slash {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #fff, #00d2ff, #fff, transparent);
+            box-shadow: 0 0 20px #00d2ff, 0 0 40px #fff;
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: top;
+            animation: slashEffect 0.4s ease-in-out forwards;
+            z-index: 10001;
+        }
+
+        /* Le due metà dello schermo */
+        .screen-half {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background-color: #0a1118;
+            animation-duration: 0.8s;
+            animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+            animation-fill-mode: forwards;
+            animation-delay: 0.4s;
+        }
+        .half-left {
+            left: 0;
+            border-right: 1px solid #1a2635;
+            animation-name: splitLeft;
+        }
+        .half-right {
+            right: 0;
+            border-left: 1px solid #1a2635;
+            animation-name: splitRight;
+        }
+
+        /* KEYFRAMES PER L'ANIMAZIONE */
+        @keyframes slashEffect {
+            0% { transform: translateX(-50%) scaleY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(-50%) scaleY(1); opacity: 0; }
+        }
+        @keyframes splitLeft {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+        @keyframes splitRight {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* -------------------------------------------------------------
+           CONTENUTO DELLA HERO SECTION (IL DETTAGLIO RIVELATO)
+        ------------------------------------------------------------- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle, #0a2540 0%, #060b11 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
+            margin-bottom: 5px;
+        }
+        .hero h2 {
+            font-size: 1.8rem;
+            color: #00d2ff;
+            font-style: italic;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        /* Box del Dettaglio Esclusivo */
+        .exclusive-detail {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 650px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+        .exclusive-detail h3 {
+            color: #00d2ff;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .exclusive-detail p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-style: italic;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            background-color: #00d2ff;
+            color: #060b11;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+        .cta-button:hover {
+            background-color: #fff;
+            color: #00d2ff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
+        /* -------------------------------------------------------------
+           SEZIONE SINOSSI (CONTENUTO SUCCESSIVO)
+        ------------------------------------------------------------- */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .main-content h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        .main-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background-color: #00d2ff;
+        }
+        .main-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #b3ccdf;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CONTENITORE DELL'ANIMAZIONE KATANA (Azzurra) -->
+    <div class="intro-container">
+        <div class="katana-slash"></div>
+        <div class="screen-half half-left"></div>
+        <div class="screen-half half-right"></div>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Mario: Road To Hero</h1>
+        <h2>Il Destino è Tracciato</h2>
+
+        <!-- Il Dettaglio nascosto rivelato dopo il taglio -->
+        <div class="exclusive-detail">
+            <h3>Dettaglio Esclusivo</h3>
+            <p>"La mattina tra i libri, la notte tra le ombre. Nessuno dei suoi compagni di corso sa chi sia veramente. Ma quando il dovere chiama, lo studente svanisce per lasciare spazio all'eroe..."</p>
+        </div>
+
+        <a href="Personaggio.html" class="cta-button">Entra nel Mondo</a>
+    </section>
+
+    <!-- SECONDA SEZIONE: LA STORIA -->
+    <section id="storia" class="main-content">
+        <h2>La Storia</h2>
+        <p><strong>Un normale studente. Un destino straordinario.</strong></p>
+        <p>Per il mondo intero, Mario è solo un ragazzo qualunque, diviso tra esami universitari, lezioni e una vita ordinaria. Nessuno sospetta che dietro quell'aria tranquilla si celi l'anima di un guerriero, costretto a impugnare la spada per proteggere ciò che ama.</p>
+        <p>In <em>Mario: Road To Hero</em>, la barriera tra le sue due vite crollerà tragicamente. Diviso tra la normalità che ha sempre conosciuto e la spietata chiamata all'azione, Mario dovrà capire cosa significa davvero essere un eroe — e quanto è disposto a sacrificare per diventarlo.</p>
+        <p>Preparati a un romanzo d'azione travolgente, dove il pericolo si nasconde dietro l'angolo più insospettabile della quotidianità.</p>
+    </section>
+
+</body>
+</html>
